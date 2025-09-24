@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing - Novo Site TekSea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e30613; /* Vermelho TekSea */
+            --secondary-color: #000000; /* Preto */
+            --light-color: #ffffff; /* Branco */
+            --gray-color: #f5f5f5; /* Cinza claro */
+            --dark-gray: #333333; /* Cinza escuro */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 200px;
+            height: 60px;
+            display: block;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://teksea.net/wp-content/uploads/2019/09/teksea-front3.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-color);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--dark-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Briefing Section */
+        .briefing-section {
+            background-color: var(--gray-color);
+        }
+
+        .briefing-item {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .briefing-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .briefing-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .briefing-item h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .briefing-item h3 i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .briefing-item ul {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .briefing-item ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .briefing-item ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            width: 48%;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.5s ease;
+            }
+
+            nav ul.active {
+                height: auto;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .footer-column {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="file:///C:/Users/AlanaCarvalho/Downloads/LOGO.svg" alt="TekSea Logo" class="logo">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#estrutura">Estrutura</a></li>
+                        <li><a href="#identidade">Identidade</a></li>
+                        <li><a href="#conteudo">Conteúdo</a></li>
+                        <li><a href="#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="#referencias">Referências</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Briefing do Novo Site</h1>
+            <p>Apresentação do projeto de redesign do site institucional TekSea</p>
+            <a href="#estrutura" class="btn">Conheça o Projeto</a>
+        </div>
+    </section>
+
+    <!-- Briefing Section -->
+    <section class="briefing-section" id="estrutura">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Estrutura e Navegação</h2>
+                <p>Organização e hierarquia de informações do novo site</p>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-sitemap"></i> Menu Principal</h3>
+                <ul>
+                    <li>Produtos | Mercados que Atendemos | Serviços | Sobre a TekSea | Contato</li>
+                    <li>Produtos organizados em até 4 níveis (linha → tecnologia → família → produto)</li>
+                    <li>"Mercados que Atendemos" como segunda rota de navegação, paralela a Produtos</li>
+                    <li>Home destacará setores e produtos em destaque (retificadores, nobreaks, etc.)</li>
+                    <li>Aba específica para Serviços (Service/Suporte)</li>
+                </ul>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-bolt"></i> Soluções/Conversão de Energia</h3>
+                <ul>
+                    <li>Manutenção da aba de Soluções/Conversão de Energia (universo TekSea)</li>
+                    <li>Navegação direta por: AC/DC, DC/DC, AC/AC, Outras linhas de conversão de energia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="identidade">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Identidade Visual</h2>
+                <p>Paleta de cores e elementos visuais do novo site</p>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-palette"></i> Cores e Estilo</h3>
+                <ul>
+                    <li>Base: verde TekSea adaptando o amarelo</li>
+                    <li>Paleta de usabilidade geral: Branco, Verde TekSea, Preto, Cinza e Amarelo</li>
+                    <li>Seções técnicas (retificadores, UPS) em amarelo/preto, alinhadas com os catálogos</li>
+                    <li>Layout moderno, clean e intuitivo</li>
+                </ul>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-images"></i> Imagens</h3>
+                <ul>
+                    <li>Fotos reais tratadas + renders/IA para efeito publicitário</li>
+                    <li>Infraestrutura fabril: incluir fotos de drone e estrutura industrial</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="briefing-section" id="conteudo">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Conteúdo</h2>
+                <p>Organização e tipos de conteúdo do novo site</p>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-file-alt"></i> Textos e Downloads</h3>
+                <ul>
+                    <li>Textos atuais serão mantidos, mas reorganizados em layout visual e objetivo</li>
+                    <li>Seção de Downloads: catálogos, datasheets e formulários</li>
+                </ul>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-newspaper"></i> Notícias e Eventos</h3>
+                <ul>
+                    <li>Notícias: mínimo 1 publicação/mês, com opção de compartilhamento (LinkedIn, WhatsApp)</li>
+                    <li>Eventos: listagem de feiras, com integração direta ao calendário (Google/Outlook)</li>
+                </ul>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-video"></i> Mídia e Cases</h3>
+                <ul>
+                    <li>Vídeos: centralizados no site, sem depender apenas do YouTube</li>
+                    <li>Referências: mostrar cases estratégicos (Itaipu, Bracell, Vivo, Petrobras), sem expor todo portfólio para evitar vulnerabilidade competitiva</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="funcionalidades">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Funcionalidades</h2>
+                <p>Recursos técnicos e integrações do novo site</p>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-globe"></i> Multilíngue e Segurança</h3>
+                <ul>
+                    <li>Multilíngue: português, inglês e espanhol</li>
+                    <li>Segurança: WordPress com autenticação de 2 fatores + domínio protegido</li>
+                </ul>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-cogs"></i> Gerenciamento e Integração</h3>
+                <ul>
+                    <li>Site manipulável pela equipe interna</li>
+                    <li>Integração com CRM e formulários inteligentes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="briefing-section" id="referencias">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Referências Avaliadas</h2>
+                <p>Inspirações e melhores práticas de mercado</p>
+            </div>
+
+            <div class="briefing-item fade-in">
+                <h3><i class="fas fa-lightbulb"></i> Inspirações de Mercado</h3>
+                <ul>
+                    <li><strong>ABB:</strong> organização, aba de serviços, downloads com capa do catálogo</li>
+                    <li><strong>Danfoss:</strong> índice intuitivo</li>
+                    <li><strong>AEG:</strong> interatividade e apresentação dos produtos</li>
+                    <li><strong>Wärtsilä:</strong> clean e marketing</li>
+                    <li><strong>Siemens:</strong> navegação com retorno fácil entre níveis</li>
+                    <li><strong>Ingeteam:</strong> novidades, eventos, vídeos institucionais</li>
+                    <li><strong>Eltek:</strong> organização técnica das informações (technical data)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TekSea</h3>
+                    <p>Especialistas em soluções de energia e conversão para mercados industriais.</p>
+                    <div class="social-links">
+                        <a href="https://br.linkedin.com/company/teksea" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/teksea/?locale=pt_BR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/teksea_/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@TEKSEALTDA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                 </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Adele Wruck, 59, Blumenau – SC</p>
+                    <p><i class="fas fa-phone"></i> +55 47 3338-1137</p>
+                    <p><i class="fas fa-envelope"></i> comercial@teksea.net</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 V4 Borges, Rocha & Co. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                navMenu.classList.remove('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade In Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // Run once on load
+
+        // Header Scroll Effect
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
